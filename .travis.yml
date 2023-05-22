@@ -18,4 +18,4 @@ jobs:
  
 
 script:
-  - echo $foo
+  - echo $API_TEST_HASHICORP_IBM_FOO
