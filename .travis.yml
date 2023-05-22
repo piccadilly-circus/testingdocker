@@ -1,3 +1,22 @@
-language: generic
-scripts:
-- docker build .
+os: linux
+dist: focal
+
+ 
+
+jobs:
+  include:
+    - vault:
+      token: $VAULTSEC
+      api_url: https://vault-east.staging.travis-ci.org
+      secrets:
+        - api/test/hashicorp/ibm/
+    - vault:
+      token: $VAULTSEC
+      api_url: https://vault-east.staging.travis-ci.org
+      secrets:
+        - api/test/hashicorp/ibm/foo
+
+ 
+
+script:
+  - echo $foo
