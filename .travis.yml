@@ -1,9 +1,8 @@
 os: linux
 dist: focal
+language: shell
 
- 
-
-jobs:
+ jobs:
   include:
     - vault:
       token: $VAULTSEC
