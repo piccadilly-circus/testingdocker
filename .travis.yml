@@ -4,6 +4,7 @@ language: shell
 vault:
   token:
     secure: "sU8UuXBf8orr7PxEk0OrLSTAT+SrgfeHGE+Ak/2YUCPqi2JXw/xNcsh+9T/OwHVfygnvbQSZxWFMevCRr6LZwhHtenFIbP9++vFac0hvnwawxX/7EtG74Bypks1Ejto7Zky35jtixbTVSPuMQ9gQpQqKcTglIKlObAy3N/AbD8DQupH/pXdp0QlaWqjG0yl2b+Dyz5PeqLuc3WK+2tv+Q0CgBOPgLOXa172ql2aJ8wOokMvZgKvR3tcufSir4WS5Yl3R3CDha33zIB96B5PIDfpG0GtoQXLxnGvTt5ZgTYOI1XJRLuxhVgMUG/R+0ar5yrhIo4vqbpJPnRpywXXM7vSXlGJ0s1BFNm5jVnL9s/vpdZRKvbUwVmR+XXzy80QMxX9gSTM0966KNACdE7WkU/saq0sEoa6smiHKZYNAcEtLsUGaK1h2j2bWkl3MmvWQVWZIGXYrnc1u6N/sp/Bb+4RnmvmMRIWXHvaRWP7xsR2hqA58snMqPgG7Nyur+GiSxORmJ29U8eYzj55ZsA0FJKAPgUR25pwUWo06/WB4XIyd/isZ89nn/jDMPe3iRLMVlv+Rxwa8hOyAuxLJJs9NS5dPdbADROa+xnOzHFwOnW8QLfR/Od9vb8E6QxUYRzFbACNIgVryaR63qOBzGq9mBJ+PlgYZafmoF2m9dzmmpEE="
+  api_url: https://vault-east.staging.travis-ci.org 
   secrets:
     - ibmhashicorp/foo
 
