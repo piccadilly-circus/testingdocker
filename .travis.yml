@@ -10,3 +10,4 @@ vault:
 
 script:
   - echo $ibmhashicorp_foo
+#this adds comment
