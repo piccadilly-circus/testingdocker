@@ -6,7 +6,7 @@ vault:
     secure: "Ng/g8TZDWJpB0OXC3+Gz9J2f1x7ovX7SnbWSUBskLYeRgSJQw4uXThGZWZIOXzwOWkCUed7S1CEkbcGg/248lPjLOksEcHZhXcPUGYxljbF9mFphwqeCXmvRIYOO4PHD23axxM+XAUSx5N6vVxz8AQ3F1cr0hCVbnFRpqPtDHAfJsZ4EVztaXnxXsfxuftFVY+PuHdrkjcxdyqSwpCV/Zru8EBu+5POVDaQ2gaobBAGe362MtfYBVT6VNokzY4LriT4P7XAr3rm17AlcjyPomBrit/EsoJkiNAM+pEoQjGvIPnzKoQbb4jaN+DZw/mozX/AxqSSeht3Kv4yIXGbTDcbrcQ13TsOqrtmrpDkLPyibb2/MBlZQzm7k9iCnQtAmmP+eapQkJD6nh/ZlTLWbPFBTo6ss66LpaPKyiuA6CyNTMJ9FpLV1wU9Ggf74s5gUUgXZW+Y2zxEe3luwlGn5acJBCI3aySzObI/FDHhDm7e8AggTBxtFa+2/xouKFEtSBhQK84eECbItDylGv4GaBxfRT8AIAmfxnIa55xyd/QBAVhkJ11njVlfARJS/rL6gOt8KlN+WThL50vDYmNrvL/txnDQhbF5lAVuK3pQydjDeFOHogAqY/zjQiWXlhEdpwI4WrUxATqNN/yO40ibkk36I1jkL7jQ/aEsgsZVU9Hs="
   api_url: https://vault-dwztla.travis-ci.com
   secrets:
-    - kv/foribm
+    - foribm
 
 script:
   - echo $foribm_foo
