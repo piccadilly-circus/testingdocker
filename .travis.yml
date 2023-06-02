@@ -3,11 +3,11 @@ dist: focal
 language: shell
 vault:
   token:
-    secure: "nUGv3VaGTpR/o2Hd9WYo2C5qC9wPtmbwpWNh3p4MlabDlQUXVbkuDcg5eD657PKHNIwnkMMa1ADXh+1XIkMSLcfeZf8ThbyqiGOjQEZDMZ/jY/lUvGGmv3ovGXoZGBoRq9c6hOoN1CJghhepWsHPAnIQRWcb7tlfUy7a1u2E8W4QcB6+DlyJxSUnIWTCOowgFSG6IqoySKBrpYGXBCE+VzeInuw4vhx7Nj2lRW9gt9KKvRqOasvsqMm94PK3eo9FB+3Pr+MiDxC9twyLrUmLKsCcyAMiEiMyK3eMMYy+u3nDw/4irhUZlkc+TrXZa0AS66WkvUJdspSoFYzmo5JbOuRTHE9oQbJ+Mx+VFDi5D3JJUKrox3tOE6nZATAToMPKHbtrr1FRNlgnynucVRWAPjuGvzEGE6cx8lBci9PqJe9e3Emb5vb9RJedEeHvZCFewwrUGvyHvzNhqo7uinlFz3axeRFWOyPNlvU7/FmXGXqJkhyh6R9lZY41T7LuNte1E5bfmaJZJi6DmZ/g7A6cwt59Y5MQLwplHyn01Jn9SOstJx7t8jtGPiHoaYk5QZynBoTWvdKkqsF83gXSdov+yd80nTN/YUAEzOWatmJyrOrRVjKlDNNC+F9PnwSJaPOJel8uzQI9QLryY1mVgAh7nXT9oSMs03BKwTzYd3oSB6M="
-  api_url: https://vault-east.staging.travis-ci.org/v1
+    secure: "Ng/g8TZDWJpB0OXC3+Gz9J2f1x7ovX7SnbWSUBskLYeRgSJQw4uXThGZWZIOXzwOWkCUed7S1CEkbcGg/248lPjLOksEcHZhXcPUGYxljbF9mFphwqeCXmvRIYOO4PHD23axxM+XAUSx5N6vVxz8AQ3F1cr0hCVbnFRpqPtDHAfJsZ4EVztaXnxXsfxuftFVY+PuHdrkjcxdyqSwpCV/Zru8EBu+5POVDaQ2gaobBAGe362MtfYBVT6VNokzY4LriT4P7XAr3rm17AlcjyPomBrit/EsoJkiNAM+pEoQjGvIPnzKoQbb4jaN+DZw/mozX/AxqSSeht3Kv4yIXGbTDcbrcQ13TsOqrtmrpDkLPyibb2/MBlZQzm7k9iCnQtAmmP+eapQkJD6nh/ZlTLWbPFBTo6ss66LpaPKyiuA6CyNTMJ9FpLV1wU9Ggf74s5gUUgXZW+Y2zxEe3luwlGn5acJBCI3aySzObI/FDHhDm7e8AggTBxtFa+2/xouKFEtSBhQK84eECbItDylGv4GaBxfRT8AIAmfxnIa55xyd/QBAVhkJ11njVlfARJS/rL6gOt8KlN+WThL50vDYmNrvL/txnDQhbF5lAVuK3pQydjDeFOHogAqY/zjQiWXlhEdpwI4WrUxATqNN/yO40ibkk36I1jkL7jQ/aEsgsZVU9Hs="
+  api_url: https://vault-dwztla.travis-ci.com
   secrets:
-    - secrets/secret/ibmhashicorp/foo
+    - kv/foribm
 
 script:
-  - echo $ibmhashicorp_foo
+  - echo $foribm_foo
 #this adds comment
