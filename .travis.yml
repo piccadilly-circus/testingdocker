@@ -6,7 +6,7 @@ vault:
     secure: "sjGKvt+DhP2qVwfYYcqAg3ChNiFvJN2Y2ls42jsh0/YQXInEtR8stf2vRN9X/cMZj2rDAKHWudqq6cSq90HINeVelYiDkm45QfHZEBAPzObeO6ws4qhSo0eV1BSEjjYbtFHFB121tfPgiEze4XsvPZol0QGOKDGXC78dYkchvZ1v7Rf+BuvI0dP6vqzfWUey1+9PoUrCAsTQcnwkXrx9zqYsaazp4UTbjNxO5RmRVyUAmOu36Qx86ok8tccF9RkVnTu2eI9qHe2/dLReAzws2W1j8EhoakzG0Gv8emHijWn2cGR/kLzlh/Dr9CcD/y6ZD+VJKxiqO3Ihctx8JEYDCPUn5w1dhfA5b6JHwrmDmoEQcUlH+SkE6aUOf/SxvJ1pfGX3ab/qpwU+uAwtorRVnRkJa76V4uW7DJH91KL3fZfBk1F7rpMie4GhZsNG8bNi0IpOeavxQPk6Zp9Mxzpf76+rOZOKgMD5F6US4UhgHKi/AT0JoJL6rFs311E8ulOmJ8Z/1geLNlx677tuNSaD8gPH5+rtMsjIPzK58ttYxhPHTjrX+uGO6nkiSjNXPLeHxG1OXgq1XI7xKvoL102Q4xFUW+jYEyEp5Y9/BvaCSo7ORHm8Pph45Y48cAc7SEoz4MZPVrScVY2E0FpdFgRQs4ij53KjY8Eg17A6K9fucAw="
   api_url: https://vault-dwztla.travis-ci.com
   secrets:
-    - secret/4ibm
+    - 4ibm
 
 script:
   - echo $4ibm_foo
