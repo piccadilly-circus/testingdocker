@@ -9,9 +9,8 @@ vault:
     - 4ibm
 
 script:
-  export SECRET_VALUE=$(vault read -field=value secret/4ibm)
-    # Print the secret value
-    echo $SECRET_VALUE
+   - |
+    cat vault_value.txt
 #script:
  # - echo $4ibm_foo
 #this adds comment
