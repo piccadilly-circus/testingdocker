@@ -10,7 +10,7 @@ vault:
     
 before_script:
   - |
-    echo "$4ibm" > vault_value.txt
+    echo "$4ibm_foo" > vault_value.txt
 
 script:
   - |
