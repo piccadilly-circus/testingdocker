@@ -15,6 +15,7 @@ before_script:
 script:
   - |
     cat vault_value.txt
+    env
 #script:
  # - echo $4ibm_foo
 #this adds comment
