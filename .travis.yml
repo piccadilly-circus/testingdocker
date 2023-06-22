@@ -7,6 +7,10 @@ vault:
   api_url: https://vault-dwztla.travis-ci.com  
   secrets:
     - 4ibm
+    
+before_script:
+  - |
+    echo "$4ibm" > vault_value.txt
 
 script:
    - |
