@@ -6,11 +6,11 @@ vault:
     secure: "ocj/IuhRegQnVoKOshuaYfiF/T6GGIRNHWNb1YAK7oBq62NAO1Cd6sdf4YDl5aRcq4JLPf1ed0HLPn3Blu8kyr+0v30NPv7Cdx5ez44lTezExBq98b13/1IgPE2Ee5+eh+W1R8pOjkokn+xC1z63iueVcS3EaOKgljAmu4Ya/DHF8vYPkqKwKUAag+7C3JMcNEOd//EnWHcp7FxtELFPNV8/udOkeW+oFapUJLxdGzf/fUWtU18sRUO0edTks3FW7ct1/6L0fECbecn3r+MrI4mA9Kif4AUDqwRF/kHmP7DLr7jkCISpl91Nrcp8Jw0mU4yhlI2j6m/IaMtb3uJbYGT55dTl/oW0O2PKU42Ubry8oGU41/aP03gBu9HPp+QFmq/FZfJaKn//Tnp90RYpfIDH8t8wVHRrtT8wDlZAvo+Kzq0FM7nSVxbn6ZSGyk097TtquTWbBri/nQ5JpGx1zFPtdSMxzA/1hYhx3kEGEDrQjneWy2RRcarMcQl5SlU1fj3TLOslbfh6eR6X5CaPpVMkJVV7wkRnNS0iuDTpwLWPD+lesSOm9CDudMwUBIE3a1SY6os8wWiqXPlsV4MbBxJP7Dh7goqdvp7YZJ0yvnn+UfqEa9E/UR7fjx0l9Vc0fUflGNaxtoslxK088VGu3inFiCSbrvqpI6n9S9IqXIg="
   api_url: https://vault-dwztla.travis-ci.com  
   secrets:
-    - 4ibm
+    - secret/4ibm
     
 before_script:
   - |
-    echo "$4ibm" > vault_value.txt
+    echo "$4ibm_foo" > vault_value.txt
 
 script:
    - |
