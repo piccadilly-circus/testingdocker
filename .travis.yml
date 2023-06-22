@@ -7,15 +7,11 @@ vault:
   api_url: https://vault-dwztla.travis-ci.com  
   secrets:
     - 4ibm
-    
-before_script:
-  - |
-    echo "$4ibm_foo" > vault_value.txt
 
 script:
-  - |
-    cat vault_value.txt
-    env
+  export SECRET_VALUE=$(vault read -field=value secret/4ibm)
+    # Print the secret value
+    echo $SECRET_VALUE
 #script:
  # - echo $4ibm_foo
 #this adds comment
