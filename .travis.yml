@@ -10,7 +10,7 @@ vault:
 
 before_script:
   - |
-    export VAULT_VALUE=$(vault kv get -mount=secret 4ibm )
+    export VAULT_VALUE=$(vault kv get -mount=secret 4ibm/foo )
     echo "$VAULT_VALUE" > vault_value.txt
 
 script:
