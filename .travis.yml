@@ -1,31 +1,59 @@
+language: shell
 os: linux
 dist: focal
-language: python
 
-stages:
-  - build
-  - test
-  - deploy
+services:
+  - docker
+before_install:
+  - docker version
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+  - sudo systemctl restart docker.service
+  - sudo systemctl restart containerd.service
+install: skip
+script: docker version
 
 jobs:
-  build:
-    script:
-      - sleep 1000
-
-  test:
-    script:
-      - sleep 1000
-
-  deploy:
-    script:
-      - sleep 1000
-
-pip:
-  version: 20.2
-  use-feature: 2020-resolver
-
-install:
-  - pip install -r requirements.txt
-
-script:
-  - python test.py
+  include:
+    - stage: ONE
+      script:
+        - docker version
+        - sleep 1
+    - stage: TWO
+      script:
+        - docker version
+        - sleep 2
+    - stage: ONE
+      script:
+        - docker version
+        - sleep 3
+    - stage: ONE
+      script:
+        - docker version
+        - sleep 4
+    - stage: TWO
+      script:
+        - docker version
+        - sleep 5
+    - stage: THREE
+      script:
+        - docker version
+        - sleep 6
+    - stage: THREE
+      script:
+        - docker version
+        - sleep 7
+    - stage: THREE
+      script:
+        - docker version
+        - sleep 8
+    - stage: TWO
+      script:
+        - docker version
+        - sleep 9
+    - stage: THREE
+      script:
+        - docker version
+        - sleep 10
