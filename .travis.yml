@@ -19,3 +19,13 @@ jobs:
   deploy:
     script:
       - sleep 1000
+
+pip:
+  version: 20.2
+  use-feature: 2020-resolver
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python test.py
