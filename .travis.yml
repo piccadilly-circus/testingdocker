@@ -1,20 +1,21 @@
 os: linux
 dist: focal
-language: shell
-vault:
-  token:
-    secure: "sZmSbume3Z0Lb5wtvyfosMGTCD+toRoiPuw7dx6My90VDR4Rp+iSznsAaZ8ZxstBon2R1HuUho4qHpudbl11j04wMEkIQwmqFNDh55+bu7CHQez+XtKUSLOdRb97BDcRjQ9kMQKBL0ql1EYnfbF58+cA9DRYEpjV6f0/RbA53vZwCKbHG/q07CeEoZly2nnOpwqenGvbIhbFrm/ZMIrvB579lFyYXW0XKNyC4FxkZu2ApVo98MHmsaGLK4fq1TsvrvlMpUL6HA2lmDO+VwIWlLgGxgm5aybO0ivAlfAf2dF5ogSFmvIiS3AaT0JqcuUCVH20qdiLXIIF6sstdSyA9aMiRJBE6fPqwC3MuNFjKF1CWqJzwU5RBpihTqvZ4+gOKuaE2DXg6NxLT1YNMUBbyjsJE5mXKsCUb48uo5YCdje61zu9pIZkQh4+WHDNQWZb4YWIsZpPX5YtYgbCnOLu5rrbef3Je7bwM8Qw/9ZxCC5tJ95Xzf8tq3075WC7R4pHWdHLXFRZafjQoPY0pCgP/IKq0+qhBlxOtJOpOKpB0M1obemcseS0prQ/Mb+8ubWInP0LOD1j16pd6+/YH2NqC/hn2omLjtM/5VBnUOY1KzvkU/Cd6XTgZpIrK1vrXBJzcN2KVX4JjZ8EWnh5QOOVPwmCNVwJa90Ts/wr5WVtPtY="
-  api_url: https://vault-dwztla.travis-ci.com
-  secrets: 
-    - 4ibm
+language: python
 
-before_script:
-  - |
-    export VAULT_VALUE=$(vault kv get -mount=secret 4ibm/foo )
-    echo "$VAULT_VALUE" > vault_value.txt
+stages:
+  - build
+  - test
+  - deploy
 
-script:
-  - |
-    cat vault_value.txt
-#testing now on TCIE
-#engaging test on api.travis
+jobs:
+  build:
+    script:
+      - sleep 1000
+
+  test:
+    script:
+      - sleep 1000
+
+  deploy:
+    script:
+      - sleep 1000
