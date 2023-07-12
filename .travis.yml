@@ -5,6 +5,17 @@ before_install:
   - echo "This is a simple .travis.yml file for shell."
 
 script:
-  - echo "Hello, Travis CI!"
-  - echo "This is a simple build script."
-  - echo "You can add your build commands here."
+  - |
+    if [[ $TRAVIS_BRANCH != "master" && $TRAVIS_BRANCH != "stage" && $TRAVIS_BRANCH != "release" && $TRAVIS_BRANCH != "docker-image" ]]; then
+      echo "Build process for branches other than master, stage, release, and docker-image"
+      # Add your build commands here
+    else
+      echo "Skipping build process for branch $TRAVIS_BRANCH"
+    fi
+
+branches:
+  except:
+    - master
+    - stage
+    - release
+    - docker-image
