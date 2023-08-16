@@ -8,13 +8,5 @@ vault:
   secrets: 
     - 4ibm
 
-before_script:
-  - |
-    export VAULT_VALUE=$(vault kv get -mount=secret 4ibm/foo )
-    echo "$VAULT_VALUE" > vault_value.txt
-
-script:
-  - |
-    cat vault_value.txt
 #testing now on TCIE
 #engaging test on api.travis
