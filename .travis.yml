@@ -4,7 +4,7 @@ language: shell
 vault:
   token:
     secure: "OksxymaOMNRsuh30YgKXXPZK1XwRmoCt0NLfICpfp4SypE8QxAsOp5wDM92T/Gr+zkgnKdLg7UjT+c25cF53x0fjQ/8koCeKaS1mWcrjW/63XL4aWlk+RELpjTZjzmv8GDmQYe4fjEkj8rybIAFxLd0UjMOpjZdm+Gst0GiDsh2rQZX0Hb7/HzgTv+b/gpzJPKnaflDKIMLfVCLE8Ppr/GsmRzxkIqtV8SawAze/aKx9aiyFlYK5neN0N9kyORaS1oHC1ysakIvsXCK9O5TFlTOtnh8LY/GI66S5zD+I5obmoApZNX3ATveq6dsuk+0kK2P8x979ZQrk2LX9HbVNfXPqth78mRSVEzq6KnKwdkiPOZNFymH/xClCQEEoUd0Q8QL7phT1UMOnxEhH4/XmZWrCf6Bsom5NSrbv8SX2KJRxkUFEw62V1aRz3xWsRurzIscwVWbJ+x3MAfRFKLl3PkBZ2vYwHqQzS+crF5a/t4W2vwB0ntdD49gwTTes1Cl07Nw/xIseCGZKXLKR3OzpgT0PuplzY5aWaMezE9pscuq+DXK/3E4mA5crACehIZyaqxASSK1JCommRHS5EjX4RQNx8C6gFOtmwUCnr8cZ7TUMqKY24gjl5392NhsPmZosQc8Y+Ag5z5MjifAzFJYITwnOYFWv0hCY5OYIXKbQ4GE="
-    api_url: https://vault-dwztla.travis-ci.com
+  api_url: https://vault-dwztla.travis-ci.com
   secrets: 
     - 4ibm
 
