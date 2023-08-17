@@ -10,7 +10,7 @@ vault:
 
 script:
 #assuming that under /ns1/project_id/secret_key_a a secret with key ‘message’ is present
-  - echo $SECRET_KEY_A_MESSAGE 
+  - echo $SECRET_KEY_B_CLIMATE 
 
 #testing now on TCIE
 #engaging test on api.travis
