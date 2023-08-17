@@ -6,28 +6,25 @@ env:
    # - FOO=a
     - BAR=false
 install: skip
-
- 
-
+stages:
+  - A
+    if: env(FOO) = false
+  - B
+    if: env(FOO) = true
 jobs: 
   include:
-    - stage: "STAGE A"
-      name: "job 1"
+    - stage: "A"
+      name: "STAGE A"
       script: sleep 1
 
-      if: env(BAR) = false
-    - stage: "STAGE A"
-      name: "job 2"
+    - stage: "A"
+      name: "STAGE A"
       script: sleep 2
 
-      if: env(BAR) = false
-    - stage: "STAGE B"
-      name: "stageBjob 1"
+    - stage: "B"
+      name: "STAGE A"
       script: sleep 3
 
-      if: env(BAR) = true
-    - stage: "STAGE B"
-      name: "STAGEbjob2"
+    - stage: "B"
+      name: "STAGE A"
       script: sleep 4
-
-      if: env(BAR) = true
