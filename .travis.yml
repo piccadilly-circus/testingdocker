@@ -9,8 +9,9 @@ vault:
     - testmkd/ibmtest
 
 script:
-#assuming that under /ns1/project_id/secret_key_a a secret with key ‘message’ is present
+#assuming that under testmkd/ibmtest a secret with key ‘foo’ is present
   - echo $IBMTEST_FOO 
 
 #testing now on TCIE
 #engaging test on api.travis
+#testing with echo
