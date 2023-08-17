@@ -1,16 +1,143 @@
-os: linux
-dist: focal
-language: shell
-vault:
-  token:
-    secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
-  api_url: https://vault-dwztla.travis-ci.com
-  secrets: 
-    - testmkd/ibmtest
+jobs:
+  include:
+    - stage: "Vault Tests"
+      name: "A job w/o config for Vault"
+      script:
+        - echo $SECRET_KEY_A_MESSAGE
 
-script:
-#assuming that under /ns1/project_id/secret_key_a a secret with key ‘message’ is present
-  - echo $IBMTEST_FOO 
+    - stage: "Vault Tests"
+      name: "jobs includes - two keys should be parsed successfully by user program but not echoed by system call from within program"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token:
+          secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
+        secrets:
+          - namespace:
+            - name: ns0
+            - project_id/secret_key_0
+            - project_id/not_existent
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+      script:
+        - ruby ./source/vault_check.rb
 
-#testing now on TCIE
-#engaging test on api.travis
+    - stage: "Vault Tests"
+      name: "jobs includes - two keys should be parsed successfully by user program but not echoed by system call from within program, reversed order of secrets in .travis.yml"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token:
+          secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
+
+        secrets:
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - namespace:
+            - name: ns0
+            - project_id/secret_key_0
+            - project_id/not_existent
+      script:
+        - ruby ./source/vault_check.rb
+
+    - stage: "Vault Tests"
+      name: "jobs includes - two keys should be not explicitly echoed"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token:
+          secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
+        secrets:
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+      script:
+        - echo "Explicit echo check:"
+        - echo $SECRET_KEY_A_MESSAGE
+        - echo $SECRET_KEY_B_CLIMATE
+        - echo "$SECRET_KEY_A_MESSAGE"
+        - echo "$SECRET_KEY_B_CLIMATE"
+
+    - stage: "Vault Tests"
+      name: "jobs includes - Plain text token 'plain_token' -> can't connect to the vault as token is wiped out as Travis parsing error does the job"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token: "plain_token"
+        secrets:
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+      script:
+        - ruby ./source/vault_check.rb
+        - echo "Explicit echo check:"
+        - echo $SECRET_KEY_A_MESSAGE
+        - echo $SECRET_KEY_B_CLIMATE
+        - echo "$SECRET_KEY_A_MESSAGE"
+        - echo "$SECRET_KEY_B_CLIMATE"
+
+    - stage: "Vault Tests"
+      name: "jobs includes - Plain text token -> can't connect to the vault as token is wiped out as Travis parsing error does the job"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token: "hvs.R8aPmQyWng9ak52n8lwILf2F"
+        secrets:
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+      script:
+        - ruby ./source/vault_check.rb
+        - echo "Explicit echo check:"
+        - echo $SECRET_KEY_A_MESSAGE
+        - echo $SECRET_KEY_B_CLIMATE
+        - echo "$SECRET_KEY_A_MESSAGE"
+        - echo "$SECRET_KEY_B_CLIMATE"
+
+    - stage: "Vault Tests"
+      name: "jobs includes - Plain text token w/o quotes -> can't connect to the vault as token is wiped out as Travis parsing error does the job"
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token: hvs.R8aPmQyWng9ak52n8lwILf2F
+        secrets:
+          - namespace:
+            - name: ns1
+            - project_id/secret_key_a
+            - project_id/not_existent
+          - ns2/project_id/secret_key_b
+          - ns2/project_id/not_existent
+      script:
+        - ruby ./source/vault_check.rb
+        - echo "Explicit echo check:"
+        - echo $SECRET_KEY_A_MESSAGE
+        - echo $SECRET_KEY_B_CLIMATE
+        - echo "$SECRET_KEY_A_MESSAGE"
+        - echo "$SECRET_KEY_B_CLIMATE"
+
+    - stage: "Vault Tests"
+      name: "jobs includes -  No secrets defined to download - there is no connection to the vault at all." # since nothing to obtain (no secrets defined), the connection is not executed and not visible in build job logs
+      vault:
+        api_url: https://vault-dwztla.travis-ci.com
+        token:
+          secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
+        secrets:
+          - kv_api_ver: kv2
+      script:
+        - ruby ./source/vault_check.rb
+        - echo "Explicit echo check:"
+        - echo $SECRET_KEY_A_MESSAGE
+        - echo $SECRET_KEY_B_CLIMATE
+        - echo "$SECRET_KEY_A_MESSAGE"
+        - echo "$SECRET_KEY_B_CLIMATE"
