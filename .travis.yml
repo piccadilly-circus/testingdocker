@@ -8,5 +8,11 @@ env:
 install: skip
 script: sleep 1
 
-if: env(FOO) =~ [abc] and env(BAR) =~ [ABC]
-
+jobs: 
+  include: 
+    - if: env(FOO) =~ [abc] and env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [abc] or env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [ABC]
+    - if: env(BAR) =~ [abc]
+    - if: env(FOO) =~ [ABC] and env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [abc] or env(BAR) =~ [abc]
