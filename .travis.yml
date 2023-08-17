@@ -12,22 +12,22 @@ install: skip
 jobs: 
   include:
     - stage: "STAGE A"
-      name: "STAGE A"
+      name: "job 1"
       script: sleep 1
 
       if: env(BAR) = false
     - stage: "STAGE A"
-      name: "STAGE A"
+      name: "job 2"
       script: sleep 2
 
       if: env(BAR) = false
     - stage: "STAGE B"
-      name: "STAGE A"
+      name: "stageBjob 1"
       script: sleep 3
 
       if: env(BAR) = true
     - stage: "STAGE B"
-      name: "STAGE A"
+      name: "STAGEbjob2"
       script: sleep 4
 
       if: env(BAR) = true
