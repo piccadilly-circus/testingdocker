@@ -4,15 +4,30 @@ language: shell
 env: 
   global:
    # - FOO=a
-    - BAR=B
+    - BAR=false
 install: skip
-script: sleep 1
+
+ 
 
 jobs: 
-  include: 
-    - if: env(FOO) =~ [abc] and env(BAR) =~ [ABC]
-    - if: env(FOO) =~ [abc] or env(BAR) =~ [ABC]
-    - if: env(FOO) =~ [ABC]
-    - if: env(BAR) =~ [abc]
-    - if: env(FOO) =~ [ABC] and env(BAR) =~ [ABC]
-    - if: env(FOO) =~ [abc] or env(BAR) =~ [abc]
+  include:
+    - stage: "STAGE A"
+      name: "STAGE A"
+      script: sleep 1
+
+      if: env(BAR) = false
+    - stage: "STAGE A"
+      name: "STAGE A"
+      script: sleep 2
+
+      if: env(BAR) = false
+    - stage: "STAGE B"
+      name: "STAGE A"
+      script: sleep 3
+
+      if: env(BAR) = true
+    - stage: "STAGE B"
+      name: "STAGE A"
+      script: sleep 4
+
+      if: env(BAR) = true
