@@ -9,3 +9,4 @@ install: skip
 script: sleep 1
 
 if: env(FOO) =~ [abc] and env(BAR) =~ [ABC]
+##
