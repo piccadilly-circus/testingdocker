@@ -8,9 +8,9 @@ env:
 install: skip
 stages:
   - name: A
-    if: env(FOO) = false
+    if: env(BAR) = false
   - name: B
-    if: env(FOO) = true
+    if: env(BAR) = true
 jobs: 
   include:
     - stage: "A"
