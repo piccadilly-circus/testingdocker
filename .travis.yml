@@ -3,12 +3,8 @@ dist: focal
 language: shell
 env:
   global:
-    - BAR=1
+    - BAR=true
 
-addons:
-  apt:
-    packages:
-      - ca-certificates
 
 install: skip
 
