@@ -1,30 +1,22 @@
 os: linux
 dist: focal
 language: shell
-env: 
+env:
   global:
-   # - FOO=a
-    - BAR=false
+    - BAR= "true"
+
+addons:
+  apt:
+    packages:
+      - ca-certificates
+
 install: skip
-stages:
-  - name: A
-    if: env(BAR) = false
-  - name: B
-    if: env(BAR) = true
-jobs: 
+
+jobs:
   include:
-    - stage: "A"
-      name: "STAGE A"
-      script: sleep 1
-
-    - stage: "A"
-      name: "STAGE A"
-      script: sleep 2
-
-    - stage: "B"
-      name: "STAGE A"
-      script: sleep 3
-
-    - stage: "B"
-      name: "STAGE A"
-      script: sleep 4
+    - name: "condition with regex"
+      script: echo "condition with regex"
+      if: env(BAR) =~ /^(?i)(true|1).*$/
+    - name: "condition-without-regex"
+      script: echo "condition without regex"
+      if: env(BAR) =~ [ABC]
