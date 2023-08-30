@@ -3,7 +3,7 @@ dist: focal
 language: shell
 env:
   global:
-    - BAR=false
+    - BAR=true
 
 
 install: skip
@@ -12,7 +12,7 @@ jobs:
   include:
     - name: "condition with regex"
       script: echo "condition with regex"
-      if: env(BAR) =~ /^(?i)(false|1).*/
+      if: env(BAR) =~ /^(?i)(false|0).*/
     - name: "condition-without-regex"
       script: echo "condition without regex"
       if: env(BAR) =~ [ABC]
