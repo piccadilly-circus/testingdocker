@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-  - sudo docker run hello-world
+  - docker run hello-world
