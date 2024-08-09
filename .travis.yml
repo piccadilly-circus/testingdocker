@@ -1,17 +1,7 @@
-os: linux
-dist: focal
-language: shell
-vault:
-  token:
-    secure: "CVFSVJxL15/x7awkAX+aN6IxFuvsbm8OHxEEFOFnKffsh+XVSNEDu3+ldbItgih2YvEFRSelpT/MmdXNgb1h0t/uSG/CqLo9kTIymh6pRcyu5Bgvd3Jp9xW8Lx2JRVDvQCmZIIQm1CAz1EpfUSmQKI1AzZyjY0hjdZe0SvxWHYfTYONpSUpbsWvf7xZdoYkKpvclxd6e7Z4APAfwiQXMyL0It/r03DYG7iA6RciZ6Bs24gvYAGyre5w7u5rXspl9QwwsVmWA3cw1UQJedvY4xfpoVMuyl3xjJIUmaSttvTnfvvplsUPjn2wXm3ugA2bitvMudsqFetXHyC+njX8cMd8I5SlBhm8BSK8KGiwS1YL02pyQxWggVCLNoPaGYDThMw84l6e76H/Lr/HwofzcNLMcdxeh6hKukLRQiYd7f1PKiRiYnJ9iXd8zcAi2kk41RAbS75TxfuIteTj85S5o6HGuYsaytq9El6UIu7LDpffgBwkcDUv1XE0q4GvmbvhW0ORZqI851MVkSItJmV4HyNzEH0ELICMoadbUMchZiYy8drETRK5t/HdY2g4n1KsJ2/335IXBU26ayTRKtmt36H1RkCSL0m+7MaJ4+ahnsOcAabeojR9hv6HhOzjsctO7YrO9B3QAXHUG7ckPGYGmSD73vR5xExJCVqD8ojoYCx0="
-  api_url: https://vault-dwztla.travis-ci.com
-  secrets: 
-    - testmkd/ibmtest
+language: bash
+
+services:
+  - docker
 
 script:
-#assuming that under testmkd/ibmtest a secret with key ‘foo’ is present
-  - echo $IBMTEST_FOO 
-
-#testing now on TCIE
-#engaging test on api.travis
-#testing with echo
+  - docker --version
